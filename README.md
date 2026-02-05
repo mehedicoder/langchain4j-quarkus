@@ -1,4 +1,4 @@
-# Quarkus AI Summarizer (LangChain4j + Groq)
+# Quarkus AI Text Processor (LangChain4j + Groq)
 
 This is a high-performance Java application built on the **Quarkus** framework, utilizing **LangChain4j** to integrate with the **Groq API**. It allows for dynamic text processing (summarization, translation, etc.) using state-of-the-art Llama 3 models.
 
