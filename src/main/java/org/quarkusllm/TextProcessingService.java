@@ -7,7 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @RegisterAiService
 @ApplicationScoped
-public interface SummarizerService {
+public interface TextProcessingService {
 
     @SystemMessage("You are a helpful assistant acting as a {role}.")
     @UserMessage("""
@@ -15,5 +15,5 @@ public interface SummarizerService {
         
         {text}
         """)
-    String summarize(String text, String role, String action, String language);
+    String process(String text, String role, String action, String language);
 }

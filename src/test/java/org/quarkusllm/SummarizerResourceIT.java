@@ -14,14 +14,14 @@ import static org.mockito.Mockito.when;
 class SummarizerResourceIT {
 
     @InjectMock
-    SummarizerService mockSummarizer;
+    TextProcessingService mockSummarizer;
 
     @Test
     void testSummarizeEndpoint() {
         // 1. Setup the mock behavior
         // Note: we now match 4 anyString() arguments to match your SummarizerService interface
         String expectedSummary = "This is a mock summary from Llama 3.";
-        when(mockSummarizer.summarize(anyString(), anyString(), anyString(), anyString()))
+        when(mockSummarizer.process(anyString(), anyString(), anyString(), anyString()))
                 .thenReturn(expectedSummary);
 
         // 2. Call the REST endpoint using POST

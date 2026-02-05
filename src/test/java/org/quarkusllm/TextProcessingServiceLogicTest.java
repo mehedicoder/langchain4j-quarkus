@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @QuarkusTest
-class SummarizerServiceLogicTest {
+class TextProcessingServiceLogicTest {
 
     @InjectMock
-    SummarizerService mockSummarizer;
+    TextProcessingService mockSummarizer;
 
     @Test
     void testLogic() {
@@ -23,11 +23,11 @@ class SummarizerServiceLogicTest {
         String expected = "Zusammenfassung";
 
         // 1. Setup: Order must match SummarizerService (text, role, action, language)
-        when(mockSummarizer.summarize(text, role, action, language))
+        when(mockSummarizer.process(text, role, action, language))
                 .thenReturn(expected);
 
         // 2. Execution: Order must be IDENTICAL to the setup above
-        String result = mockSummarizer.summarize(text, role, action, language);
+        String result = mockSummarizer.process(text, role, action, language);
 
         // 3. Assertion: Using assertEquals is cleaner than the 'assert' keyword
         assertEquals(expected, result, "The mock should return the German translation");

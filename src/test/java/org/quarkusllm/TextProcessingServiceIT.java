@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @QuarkusTest
-class SummarizerServiceIT {
+class TextProcessingServiceIT {
 
     @Inject
-    SummarizerService summarizerService; // The actual interface used by your app
+    TextProcessingService textProcessingService; // The actual interface used by your app
 
     @InjectMock
-    SummarizerService mockSummarizer; // Quarkus automatically swaps 'summarizerService' with this mock
+    TextProcessingService mockSummarizer; // Quarkus automatically swaps 'summarizerService' with this mock
 
     @Test
     void testDirectTextSummarization() {
@@ -28,11 +28,11 @@ class SummarizerServiceIT {
 
         // 2. Setup the mock behavior
         // This ensures that when the app calls the service with these 4 params, it gets our mock string
-        when(mockSummarizer.summarize(directText, role, action, language))
+        when(mockSummarizer.process(directText, role, action, language))
                 .thenReturn(mockResponse);
 
         // 3. Execute the call on the INJECTED service
-        String result = summarizerService.summarize(directText, role, action, language);
+        String result = textProcessingService.process(directText, role, action, language);
 
         // 4. Verify the result
         assertEquals(mockResponse, result);

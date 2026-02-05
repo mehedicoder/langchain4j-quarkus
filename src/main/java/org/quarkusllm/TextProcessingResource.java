@@ -5,10 +5,10 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/ai")
-public class SummarizerResource {
+public class TextProcessingResource {
 
     @Inject
-    SummarizerService summarizer;
+    TextProcessingService textProcessor;
 
     /**
      * Accepts text in the request body and processes it based on query params.
@@ -33,7 +33,7 @@ public class SummarizerResource {
 
         try {
             // Passing all data directly to your AI service
-            return summarizer.summarize(textContent, role, action, language);
+            return textProcessor.process(textContent, role, action, language);
         } catch (Exception e) {
             return "Error calling AI Service: " + e.getMessage();
         }
